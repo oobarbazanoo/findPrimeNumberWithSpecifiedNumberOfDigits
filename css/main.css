@@ -1,0 +1,50 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"],
+input[type="number"]
+{
+    max-width: 100px;
+    margin:0 auto;
+}
+
+.container-fluid
+{
+    padding: 20px;
+    text-align: center !important;
+}
+.label
+{
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+}
+
+.center
+{
+    width: 200px;
+    margin: 0 auto;
+}
+
+.moveDown
+{
+    margin-top: 5px !important;
+    display: block !important;
+}
+
+.label.moveDown
+{
+    display: inline-block !important;
+}
+
+.top5px
+{margin-top: 5px !important;}
+
+.bottom5px
+{margin-bottom: 5px !important;}
+
+#numberOfDigits
+{
+    display: inline-block;
+    width: 500px !important;
+}

@@ -27,9 +27,10 @@ $(function()
         {n+=2;}
 
         time = performance.now() - time;
-        console.log("Time of counting: ", time);
+        time = Math.round(time);
+        time/=1000;
 
-        return "Prime number: " + countMWithIndex(n);
+        return "(spent "+ time + " sec)Prime number: " + countMWithIndex(n);
     }
 
     function isLucasLehmerPrime(p)

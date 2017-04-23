@@ -17,48 +17,33 @@ $(function()
 
         var shouldBeMoreThanThis = Math.pow(10, numberOfDigits-1), n = 3, M = countMWithIndex(n);
         while(M < shouldBeMoreThanThis)
-        {
-            n += 2;
-            M = countMWithIndex(n);
-        }
+        {n += 2; M = countMWithIndex(n);}
 
-        while(true)
-        {
-            var S = 4, k = 1;
-            M = countMWithIndex(n);
+        console.log(n);
 
-            while(k != n - 1)
-            {
-                S = (S*S - 2)%M;
-                k +=1;
-            }
+        var time = performance.now();
 
-            if(S!=0)
-            {n+=2;}
-            else
-            {break;}
-        }
+        while(!isLucasLehmerPrime(n))
+        {n+=2;}
+
+        time = performance.now() - time;
+        console.log("Time of counting: ", time);
 
         return "Prime number: " + countMWithIndex(n);
     }
 
-    /*
-     Lucas–Lehmer(p)
-     ►Вход: простое нечётное число p
-     S = 4
-     k = 1
-     M = 2p − 1
-     До тех пока k != p - 1 выполнять
-     S = ((S × S) − 2) mod M
-     k += 1
-     Конец цикла
-     Если S = 0 выполнять
-     Возвратить ПРОСТОЕ
-     иначе
-     Возвратить СОСТАВНОЕ
-     Конец условия
-     */
+    function isLucasLehmerPrime(p)
+    {
+        var s = new Big(4);
+        var m = new Big(2).pow(p).minus(1);
+        for(var i = p - 2; i > 0 ; i--)
+        {
+            if((s = s.pow(2).minus(2).mod(m)).eq(0))
+            {return true;}
+        }
+        return false;
+    }
 
     function countMWithIndex(n)
-    {return Math.pow(2, n) - 1;}
+    {return (new Big(2)).pow(n).minus(1)}
 });

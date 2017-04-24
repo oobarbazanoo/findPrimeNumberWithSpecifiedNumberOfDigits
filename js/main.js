@@ -30,7 +30,11 @@ $(function()
         time = Math.round(time);
         time/=1000;
 
-        return "(spent "+ time + " sec)Prime number: " + countMWithIndex(n);
+        var answer=countMWithIndex(n);
+        
+        var numbOfDigits = getLength(answer);
+        
+        return "(spent "+ time +" sec; digits: "+ numbOfDigits +")Prime number: " + answer;
     }
 
     function isLucasLehmerPrime(p)
@@ -47,4 +51,7 @@ $(function()
 
     function countMWithIndex(n)
     {return (new Big(2)).pow(n).minus(1)}
+    
+    function getLength(number) 
+    {return number.toString().length;}
 });
